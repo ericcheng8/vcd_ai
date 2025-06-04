@@ -34,15 +34,17 @@ def parse_vcd(filepath):
       
     elif line.startswith('$var'):
       tokens = line.split()
-      if len(tokens) >= 6:
-        symbol = tokens[4]
-        signal_name = tokens[5]
+      if len(tokens) >= 5:
+        symbol = tokens[3]
+        signal_name = tokens[4]
+        print(f"Debug: {signal_name}")
         full_path = '.'.join(hierarchy_stack + [signal_name])
         signal_map[symbol] = {
             'name': full_path,
             'type': tokens[1],
             'width': int(tokens[2])
         }
+        print(f"Debug: Added signal {symbol} -> {signal_map[symbol]}")
       else:
         raise ValueError(f"Malformed $var line: '{line}'")
       
@@ -68,6 +70,7 @@ def parse_vcd(filepath):
           'signal': signal['name'],
           'value': value
         })
+        print(f"Debug: Added time {current_time} -> {time_events[current_time]}")
       # else:
       #   raise ValueError(f"Unknown signal: '{symbol}'")
 
