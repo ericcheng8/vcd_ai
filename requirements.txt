@@ -1,0 +1,6 @@
+numpy 
+networkx 
+sentence-transformers 
+faiss-cpu 
+streamlit
+pymupdf
