@@ -21,8 +21,8 @@ class GraphRAGEngine:
     self.graph = graph
     self.documents = []
     self._prepare_documents()
-    # self.model = SentenceTransformer("all-MiniLM-L6-v2") # fast & small mem footprint
-    self.model = SentenceTransformer("all-mpnet-base-v2") # more accurate but larger mem footprint
+    self.model = SentenceTransformer("all-MiniLM-L6-v2") # fast & small mem footprint
+    # self.model = SentenceTransformer("all-mpnet-base-v2") # more accurate but larger mem footprint
     self.index = self._build_faiss_index()
     self.ollama_model = extract_ollama_model_from_script()
 

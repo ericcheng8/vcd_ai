@@ -10,8 +10,14 @@ def main():
     args = parser.parse_args()
 
     signal_map, time_events = parse_vcd(args.vcd_file)
+    print("Finished parsing the .vcd file.")
+    
     graph = build_knowledge_graph(signal_map)
+    print("Finished building the knowledge graph.")
+    
     rag = GraphRAGEngine(signal_map, time_events, graph)
+    print("Finished creating the GraphRAG engine.")
+    
     answer = rag.answer(args.question)
     print("\n📌 Answer:")
     print(answer)
